@@ -1,0 +1,40 @@
+<ul class="sidebar-list">
+	<li class="sidebar-item">
+		<%= link_to "Listing", listing_house_path, class: "sidebar-link active" %>
+		<span class="pull-right text-babu"><i class ="fa fa-check"></i></span>
+	</li>
+	<li class="sidebar-item">
+		<%= link_to "Pricing", pricing_house_path, class: "sidebar-link active" %>
+		<% if !@house.price.blank? %>
+			<span class="pull-right text-babu"><i class ="fa fa-check"></i></span>
+		<% end %>
+	</li>
+	<li class="sidebar-item">
+		<%= link_to "Description", description_house_path, class: "sidebar-link active" %>
+		<% if !@house.listing_name.blank? %>
+			<span id = "photo_check" class="pull-right text-babu"><i class ="fa fa-check"></i></span>
+		<% end %>
+	</li>
+	<li class="sidebar-item">
+		<%= link_to "Photos", photo_upload_house_path, class: "sidebar-link active" %>
+		<% if !@house.photos.blank? %>
+			<span class="pull-right text-babu"><i class ="fa fa-check"></i></span>
+		<% end %>
+	</li>
+	<li class="sidebar-item">
+		<%= link_to "Amenities", amenities_house_path, class: "sidebar-link active" %>
+			<span class="pull-right text-babu"><i class ="fa fa-check"></i></span>
+	</li>
+	<li class="sidebar-item">
+		<%= link_to "Location", location_house_path, class: "sidebar-link active" %>
+		<% if !@house.address.blank? %>
+			<span class="pull-right text-babu"><i class ="fa fa-check"></i></span>
+		<% end %>
+	</li>
+</ul>
+<hr/>
+
+<%= form_for @house do |f|  %>
+	<%= f.hidden_field :active, value: true  %>
+	<%= f.submit "Publish", id: "publish_button", class: "btn btn-normal btn-block", disabled: !@house.ready?  %>
+<% end %>

@@ -1,0 +1,206 @@
+<!-- Image -->
+<div class="row">
+	<div class="col-md-12">
+		<%= image_tag @house.cover_photo(nil), width: "100%" %>
+	</div>
+</div>
+<hr/>
+
+<div class="row">
+
+	<!-- Left Panel -->
+	<div class="col-md-12">
+		<!-- Listing Name -->
+		<div class="row">
+			<div class="col-md-6">
+				<h3><%= @house.listing_name %></h3>
+				<% if @user_can_view_lead_info %>
+					<%= @house.address %> <br>
+					<%= @house.city %>,
+					<%= @house.state %>,
+					<%= @house.zip_code %> <br>
+					<%= @house.Neighboorhood %>
+				
+
+				<% end %>
+
+			</div>
+			<div class="col-md-2 text-center">
+				<% if @user_can_view_lead_info %>
+						<%= image_tag avatar_url(@house.user), class: "img-circle avatar-large" %><br/><br/>
+		        		<%= @house.user.fullname %>
+				<% end %>
+
+			</div>
+
+			<!-- Purchase Form -->
+			<div class="col-md-4">
+				<% if current_user.present? && current_user.has_payment_method?%>
+					<%= render 'bookings/form' %>
+				<% elsif current_user.present? %>
+ +					<%= link_to "Purchase", payment_method_path, class: "btn btn-default" %>
+				<% else %>
+					<%= link_to "login", new_user_session_path, class: "btn btn-default" %>
+				<% end %>
+			</div>
+		</div>
+		<hr/>
+
+		<!-- Room Info -->
+		<div class="row text-babu">
+			<div class="row text-center row-space-1">
+				<div class="col-md-2">
+					<i class="fa fa-home fa-2x"></i>
+				</div>
+				<div class="col-md-2">
+					<i class="fa fa-bed fa-2x"></i>
+				</div>
+				<div class="col-md-2">
+					<i class="fa fa-bath fa-2x"></i>
+				</div>
+				<div class="col-md-2">
+					<i class="fa fa-automobile fa-2x"></i>
+				</div>
+				<div class="col-md-2">
+					<i class="fa fa-area-chart fa-2x"></i>
+				</div>
+				<div class="col-md-2">
+					<i class="fa fa-usd fa-2x"></i>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-2"><%= @house.home_type %></div>
+				<div class="col-md-2"><%= pluralize(@house.bed_room, "Bedroom")  %></div>
+				<div class="col-md-2"><%= pluralize(@house.bath_room, "Bathroom")   %></div>
+				<div class="col-md-2"><%= @house.garage %> Car Garage</div>
+				<div class="col-md-2"><%= @house.sq_feet %> Square Ft</div>
+				<div class="col-md-2"><%= number_to_currency(@house.price, precision: 0) %> Asking Price</div>
+			</div>
+		</div>
+		<hr/>
+
+		<!-- About -->
+		<div class="row">
+			<div class="col-md-6 text-center">
+				<h3>About This Listing</h3>
+				<%= @house.summary %>
+			</div>
+				<% if @user_can_view_lead_info %>
+					<div class="col-md-6  text-center">
+						<h3>Repairs</h3>
+						<%= @house.repairs %>
+					</div>
+				<% end %>
+		</div>
+		<hr/>
+
+		<!-- Amentities -->
+		<div class="row">
+			<div class="col-md-3">
+				<h4>Features</h4>
+			</div>
+
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-4">
+						<ul class="amenities">
+							<li class ="<%= 'text-line-through' if !@house.is_air %>">Central Air</li>
+							<li class ="<%= 'text-line-through' if !@house.is_heating %>">Heating</li>
+							<li class ="<%= 'text-line-through' if !@house.is_occupied %>">Occupied</li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<ul class="amenities">
+							<li class ="<%= 'text-line-through' if !@house.is_pool %>">Pool</li>
+							<li class ="<%= 'text-line-through' if !@house.warranty %>">Home Warranty</li>
+							<li class ="<%= 'text-line-through' if !@house.active %>">Active Listing</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr/>
+
+		<!-- Carousel of Photos -->
+		<% if @user_can_view_lead_info %>
+			<div class="row">
+				<% if @photos.length > 0 %>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<% @photos.each do |photo| %>
+						<li data-target="#myCarousel" data-slide-to="<%= photo.id %>"></li>
+						<% end %>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						<% @photos.each do |photo | %>
+						<div class="item <%= 'active' if photo.id == @photos[0].id %>">
+							<%= image_tag photo.image.url(:carousel), style: 'margin: auto' %>
+						</div>
+						<% end %>
+					</div>
+
+					<!-- Left and right controls -->
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#myCarousel" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+				<% end %>
+			</div>
+			<hr/>
+		<% end %>
+
+
+
+    <!-- GOOGLE MAP -->
+		<% if @user_can_view_lead_info %>
+			<div class="row">
+
+				<div id="map" style="width: 100%; height: 400px"></div>
+
+
+				<script>
+					function initialize() {
+						var location = {lat: <%= @house.latitude %>, lng: <%= @house.longitude %>};
+						var map = new google.maps.Map(document.getElementById('map'), {
+							center: location,
+							zoom: 14
+						});
+
+						var marker = new google.maps.Marker({
+							position: location,
+							map: map
+						});
+
+						var infoWindow = new google.maps.InfoWindow({
+							content: '<div id="content"><%= image_tag @house.cover_photo(:thumb) %></div>'
+						});
+
+						infoWindow.open(map, marker);
+					}
+
+          google.maps.event.addDomListener(window, 'turbolinks:load', initialize);
+
+          <% else %>
+          	
+
+      </script>
+			</div>
+			<hr/>
+		<% end %>
+	</div>
+
+
+
+
+	<!-- Right Panel -->
+
+</div>
