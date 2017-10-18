@@ -29,9 +29,6 @@
 							<div class="col-md-4">
 								<%= f.check_box :warranty %> Inspected
 							</div>
-							<div class="col-md-4">
-								<%= f.check_box :active %> Active Listing
-							</div>
 						</div>
 						<br/><br/>
 
@@ -39,9 +36,11 @@
 							<%= f.submit "Save", class: "btn btn-form"%>
 						</div>
 					<% end %>
+					<div class="help-tip">
+    					<p>Select the amentites that apply to your property. </p>
+					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div>

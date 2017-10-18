@@ -6,8 +6,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Photos
+			 <div class="help-tip">
+    			<p>Adding photos increase your chances of attracting more buyers.</p>
 			</div>
-
+			</div>
 			<div class="panel-body">
 				<div class="container">
 					<div class="row">
@@ -26,6 +28,7 @@
 								</div>
 							</div>
 
+
 								<div class="text-center">
 									<%= f.submit "Add Photos", class: "btn btn-form", data: { disable_with: "uploading ..." } %>
 								</div>
@@ -33,7 +36,6 @@
 							<% end %>
 						</div>
 					</div>
-
 					<div id="photos"><%= render 'photos/photos_list' %></div>
 				</div>
 			</div>

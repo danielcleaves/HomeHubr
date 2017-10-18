@@ -20,8 +20,6 @@
 					<%= @house.state %>,
 					<%= @house.zip_code %> <br>
 					<%= @house.Neighboorhood %>
-				
-
 				<% end %>
 
 			</div>
@@ -30,12 +28,11 @@
 						<%= image_tag avatar_url(@house.user), class: "img-circle avatar-large" %><br/><br/>
 		        		<%= @house.user.fullname %>
 				<% end %>
-
 			</div>
 
 			<!-- Purchase Form -->
 			<div class="col-md-4">
-				<% if current_user.present? && current_user.has_payment_method?%>
+				<% if current_user.present? && current_user.has_payment_method? %>
 					<%= render 'bookings/form' %>
 				<% elsif current_user.present? %>
  +					<%= link_to "Purchase", payment_method_path, class: "btn btn-default" %>
@@ -161,12 +158,10 @@
 
 
     <!-- GOOGLE MAP -->
+    <div class="row">
+    	<div id="map" style="width: 100%; height: 400px"></div>
 		<% if @user_can_view_lead_info %>
-			<div class="row">
-
-				<div id="map" style="width: 100%; height: 400px"></div>
-
-
+			
 				<script>
 					function initialize() {
 						var location = {lat: <%= @house.latitude %>, lng: <%= @house.longitude %>};
@@ -188,14 +183,13 @@
 					}
 
           google.maps.event.addDomListener(window, 'turbolinks:load', initialize);
+          		</script>
 
           <% else %>
-          	
-
-      </script>
-			</div>
+          	<%= image_tag 'map_blur.jpg' %>
+     	  <% end %>
 			<hr/>
-		<% end %>
+		</div>
 	</div>
 
 
