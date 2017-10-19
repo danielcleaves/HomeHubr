@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-  	@houses = House.where(active: true).limit(3)
+  	@houses = House.where(active: true)
   end
 
   def search
