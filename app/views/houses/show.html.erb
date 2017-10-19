@@ -35,7 +35,9 @@
 				<% if current_user.present? && current_user.has_payment_method? %>
 					<%= render 'bookings/form' %>
 				<% elsif current_user.present? %>
- +					<%= link_to "Purchase", payment_method_path, class: "btn btn-default", disabled: @user_can_view_lead_info %>
+ +					<%= link_to payment_method_path do %>
+ 							<button class= "btn btn-default" <%= @user_can_view_lead_info ? 'disabled' : '' %> >Purchase</button>
+ 						<% end %>
 				<% else %>
 					<%= link_to "login", new_user_session_path, class: "btn btn-default" %>
 				<% end %>
