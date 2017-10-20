@@ -30,9 +30,11 @@
 			<%= @user.description %>
 		</div>
 
-		<h4>Listings (<%= @houses.length %>)</h4></div><br/>
-		<div class="row">
-		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Listings (<%= @houses.length %>)</div>
+			<div class="panel-body">
+				<%= render partial: "houses/houses_list", locals: {houses: @houses}%>
+			</div>
 		</div>
 	</div>
 </div>
