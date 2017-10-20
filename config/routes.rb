@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'about' => 'pages#about'
 
   get 'contact' => 'pages#contact'
+  post 'contact' => 'pages#contact_us'
 
   get 'terms' => 'pages#terms'
 
