@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @houses = @user.houses
+    @houses  = if @user == current_user
+                  @user.houses
+                else
+                  @user.houses.joins(:bookings).where("bookings.user_id = ?",current_user.id)
+                end
   end
 
   def update_phone_number
