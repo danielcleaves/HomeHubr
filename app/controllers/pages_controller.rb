@@ -26,4 +26,15 @@ class PagesController < ApplicationController
 
  	@arrHouses = @houses.to_a
  end
+
+ def contact_us
+  ContactMailer.contact_us(
+     first_name: params[:name],
+     last_name: params[:surname],
+     email: params[:email],
+     phone_number: params[:phone],
+     message: params[:message]
+    ).deliver_now
+  redirect_to contact_path, notcie: "Message Sent"
+ end
 end
