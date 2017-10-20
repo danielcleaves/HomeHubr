@@ -13,7 +13,9 @@ class PagesController < ApplicationController
 
  	if session[:loc_search] && session[:loc_search] != ""
  		@houses_address = House.where(active: true).near(session[:loc_search], 5, order: 'distance')
+    session.delete(:loc_search)
  	else
+
  		@houses_address = House.where(active: true).all
  	end
 
