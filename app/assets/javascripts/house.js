@@ -22,9 +22,34 @@ $(function(){
 $(document).ready(function() {
 		// Animate loader off screen
 		$(".se-pre-con").fadeOut("slow");
-	});
+
+		var mouseX;
+		var mouseY;
+		$(document).mousemove( function(e) {
+		   mouseX = e.pageX;
+		   mouseY = e.pageY;
+		});
+
+
+
+		$(".hidden-house-img").mouseover(function(e){
+			var mouseX;
+			var mouseY;
+			mouseX = e.pageX;
+		  mouseY = e.pageY;
+	  	$('.hover-content').css({'top':mouseY}).show();
+	  	console.log('show')
+		});
+
+		$(".hidden-house-img").mouseout(function(){
+	  	$('.hover-content').hide();
+	  	console.log('hide')
+		});
+});
 
 document.addEventListener("turbolinks:load", function() {
 	$(".se-pre-con").fadeOut("slow");;
   // your code here
 })
+
+//

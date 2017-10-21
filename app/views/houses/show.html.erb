@@ -33,6 +33,8 @@
 					<%= @house.state %>,
 					<%= @house.zip_code %> <br>
 					<%= @house.Neighboorhood %>
+				<% else %>
+					<%= image_tag 'blur_address.jpg', style: 'width: 38%; margin-left: -7px',  title: "Purchase lead to view house address" %>
 				<% end %>
 
 			</div>
