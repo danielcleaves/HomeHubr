@@ -5,7 +5,7 @@
 	</div>
 	<div class="">
 		<%= form_for([@house, @house.bookings.new]) do |f|%>
-			<%= f.button "BUY LEAD", type: "button", class: "btn btn-normal btn-block", data: { toggle: "modal", target: "#myModal" } %>
+			<%= f.button "BUY LEAD", type: "button", class: "btn btn-normal btn-block", data: { toggle: "modal", target: "#myModal" },  disabled: @user_can_view_lead_info %>
 
 			<div id="myModal" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
