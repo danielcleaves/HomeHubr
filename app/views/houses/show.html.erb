@@ -1,7 +1,20 @@
 <!-- Image -->
 <div class="row">
-	<div class="col-md-12">
-		<%= image_tag @house.cover_photo(nil), width: "100%" %>
+	<div class="col-md-12 hidden-house-img">
+		<% if @user_can_view_lead_info %>
+			<%= image_tag @house.cover_photo(nil), width: "100%" %>
+		<% else %>
+			<div class='blur-house-div'>
+				<div class="hover-content">
+	        <div role="alert" class="alert dark alert-warning alert-dismissible" style="text-align: center">
+		        </button>
+		        <h4></h4>
+		        <p>
+		          Purchase this lead to view house image.</p>
+		      </div>
+	    	</div>
+	    </div>
+		<% end %>
 	</div>
 </div>
 <hr/>
@@ -161,41 +174,41 @@
 
     <!-- GOOGLE MAP -->
     <div class="row">
-    	<div id="map" style="width: 100%; height: 400px"></div>
-		<% if @user_can_view_lead_info %>
+    	<% if @user_can_view_lead_info %>
+		    <div id="map" style="width: 100%; height: 400px"></div>
 
-				<script>
-					function initialize() {
-						var location = {lat: <%= @house.latitude %>, lng: <%= @house.longitude %>};
-						var map = new google.maps.Map(document.getElementById('map'), {
-							center: location,
-							zoom: 14
-						});
 
-						var marker = new google.maps.Marker({
-							position: location,
-							map: map
-						});
+						<script>
+							function initialize() {
+								var location = {lat: <%= @house.latitude %>, lng: <%= @house.longitude %>};
+								var map = new google.maps.Map(document.getElementById('map'), {
+									center: location,
+									zoom: 14
+								});
 
-						var infoWindow = new google.maps.InfoWindow({
-							content: '<div id="content"><%= image_tag @house.cover_photo(:thumb) %></div>'
-						});
+								var marker = new google.maps.Marker({
+									position: location,
+									map: map
+								});
 
-						infoWindow.open(map, marker);
-					}
+								var infoWindow = new google.maps.InfoWindow({
+									content: '<div id="content"><%= image_tag @house.cover_photo(:thumb) %></div>'
+								});
 
-          google.maps.event.addDomListener(window, 'turbolinks:load', initialize);
-          		</script>
+								infoWindow.open(map, marker);
+							}
 
-          <% else %>
-          	<%= image_tag 'map_blur.jpg' %>
-     	  <% end %>
-			<hr/>
+		          google.maps.event.addDomListener(window, 'turbolinks:load', initialize);
+		          		</script>
+					<hr/>
+				</div>
+			<% else %>
+				<div style="margin-bottom: 2em;">
+        	<%= image_tag 'blur_map.jpg', class: 'map-blur-img',  title: "Purchase lead to view house location" %>
+        </div>
+   	  <% end %>
 		</div>
 	</div>
-
-
-
 
 	<!-- Right Panel -->
 
