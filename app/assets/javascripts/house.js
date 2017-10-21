@@ -17,3 +17,14 @@ $(function(){
 		return num.replace(/,/g,'');
 	}
 });
+
+
+$(document).ready(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");
+	});
+
+document.addEventListener("turbolinks:load", function() {
+	$(".se-pre-con").fadeOut("slow");;
+  // your code here
+})
