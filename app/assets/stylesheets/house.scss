@@ -38,12 +38,16 @@
 .hover-content {
   display:none;
   margin: 0 auto;
-  margin-top: 10em;
   position: absolute;
   left: 30em;
 }
 
-// .hidden-house-img:hover .hover-content {
-//   display:block;
-// }
+.house-address-hover-content, .house-map-hover-content {
+  display: none;
+  width: 80%;
+}
 
+.house-map-hover-content {
+  margin: auto;
+  width: 50% !important;
+}

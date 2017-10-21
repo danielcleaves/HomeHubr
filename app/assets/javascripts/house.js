@@ -38,12 +38,25 @@ $(document).ready(function() {
 			mouseX = e.pageX;
 		  mouseY = e.pageY;
 	  	$('.hover-content').css({'top':mouseY}).show();
-	  	console.log('show')
 		});
 
 		$(".hidden-house-img").mouseout(function(){
 	  	$('.hover-content').hide();
-	  	console.log('hide')
+		});
+
+		$(".house-address-blur").mouseover(function(){
+	  	$('.house-address-hover-content').show();
+		});
+		$(".map-blur-img").mouseover(function(){
+	  	$('.house-map-hover-content').show();
+		});
+
+		$(".house-address-blur").mouseout(function(){
+	  	$('.house-address-hover-content').hide();
+		});
+
+		$(".map-blur-img").mouseout(function(){
+	  	$('.house-map-hover-content').hide();
 		});
 });
 
