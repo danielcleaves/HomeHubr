@@ -7,7 +7,6 @@
 			<div class='blur-house-div'>
 				<div class="hover-content">
 	        <div role="alert" class="alert dark alert-warning alert-dismissible" style="text-align: center">
-		        </button>
 		        <h4></h4>
 		        <p>
 		          Purchase this lead to view house image.</p>
@@ -34,7 +33,12 @@
 					<%= @house.zip_code %> <br>
 					<%= @house.Neighboorhood %>
 				<% else %>
-					<%= image_tag 'blur_address.jpg', style: 'width: 38%; margin-left: -7px',  title: "Purchase lead to view house address" %>
+					<%= image_tag 'blur_address.jpg', class: 'house-address-blur', style: 'width: 38%; margin-left: -7px',  title: "Purchase lead to view house address" %>
+						<div class="house-address-hover-content">
+		        	<div role="alert" class="alert dark alert-warning alert-dismissible" style="text-align: center">
+			        	<p>Purchase this lead to view house address.</p>
+			      	</div>
+			      </div>
 				<% end %>
 
 			</div>
@@ -205,6 +209,11 @@
 					<hr/>
 				</div>
 			<% else %>
+				<div class="house-map-hover-content">
+        	<div role="alert" class="alert dark alert-warning alert-dismissible" style="text-align: center">
+	        	<p>Purchase this lead to view house in google maps.</p>
+	      	</div>
+			   </div>
 				<div style="margin-bottom: 2em;">
         	<%= image_tag 'blur_map.jpg', class: 'map-blur-img',  title: "Purchase lead to view house location" %>
         </div>
