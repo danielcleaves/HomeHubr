@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<span><%= number_to_currency(@house.lead_price, precision: 0) %></span>
+		<span class="pull-right">Lead Price</span>
+	</div>
+	<div class="">
+		<%= form_for([@house, @house.bookings.new]) do |f|%>
+			<%= f.button "BUY LEAD", type: "button", class: "btn btn-normal btn-block", data: { toggle: "modal", target: "#myModal" },  disabled: @user_can_view_lead_info %>
+
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+
+			    <!-- Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Please Verify your Account</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>Enter the card's expiration year.</p>
+							<%= number_field_tag :last4_digits , nil, min: 1000, max: 9999 %>
+			      </div>
+			      <div class="modal-footer">
+							<%= f.button "Purchase", class: "btn btn-normal btn-block " %>
+							<%= f.button "Cancel", type: "button", class: "btn btn-default", data: { dismiss: "modal" } %>
+			      </div>
+			    </div>
+
+			  </div>
+			</div>
+		<% end %>
+	</div>
+
+</div>
+
+
+
+<!-- <script>
+	$(function(){
+		$('#booking_start_date').datepicker({
+			dateFormat: 'mm-dd-yy'
+		});
+		$('#booking_end_date').datepicker({
+			dateFormat: 'mm-dd-yy'
+		});
+	});
+</script> -->

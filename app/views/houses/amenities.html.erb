@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-md-3">
+		<%= render 'house_menu'%>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Features
+			</div>
+
+			<div class="panel-body">
+				<div class="container">
+					<%= form_for @house do |f| %>
+						<div class="row form-group">
+							<div class="col-md-4">
+								<%= f.check_box :is_heating %> Central Heating
+							</div>
+							<div class="col-md-4">
+								<%= f.check_box :is_air %> Central A/C
+							</div>
+							<div class="col-md-4">
+								<%= f.check_box :is_occupied %> Occupied
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-4">
+								<%= f.check_box :is_pool %> Pool
+							</div>
+							<div class="col-md-4">
+								<%= f.check_box :warranty %> Inspected
+							</div>
+						</div>
+						<br/><br/>
+
+						<div class="text-center">
+							<%= f.submit "Save", class: "btn btn-form"%>
+						</div>
+					<% end %>
+					<div class="help-tip">
+    					<p>Select the amentites that apply to your property. </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

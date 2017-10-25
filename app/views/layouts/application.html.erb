@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HomeHubr</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdDSbpkWoXG9WjeNJdne5Lp8a689wYt1U&libraries=places"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-no-turbolinks': 'true' %>
+    <%= javascript_include_tag 'application', 'data-no-turbolinks': 'true' %>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
+  </head>
+
+  <% if controller_name=="users" && action_name=="payment" %>
+    <body <%= "data-no-turbolinks='true'".html_safe %> >
+  <% elsif controller_name=="houses" && action_name=="show" %>
+    <body <%= "data-no-turbolinks='true'".html_safe %> >
+  <% else %>
+    <body>
+  <% end %>
+
+    <div class="se-pre-con"></div>
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/message' %>
+
+    <% if current_user %>
+        <input type="hidden" id="user_id" value="<%= current_user.id %>">
+    <% end %>
+
+
+       <div class="container">
+         <%= yield %>
+       </div>
+<script src="https://js.stripe.com/v3/"></script>
+  </body>
+</html>
