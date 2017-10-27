@@ -128,12 +128,21 @@
 						<ul class="amenities">
 							<li class ="<%= 'text-line-through' if !@house.is_air %>">Central Air</li>
 							<li class ="<%= 'text-line-through' if !@house.is_heating %>">Heating</li>
-							<li class ="<%= 'text-line-through' if !@house.is_occupied %>">Occupied</li>
+							<li class ="<%= 'text-line-through' if !@house.fridge %>">Fridge</li>
+							<li class ="<%= 'text-line-through' if !@house.stove %>">Stove</li>
 						</ul>
 					</div>
 					<div class="col-md-4">
 						<ul class="amenities">
+							<li class ="<%= 'text-line-through' if !@house.carpet %>">Carpet</li>
+							<li class ="<%= 'text-line-through' if !@house.hardwood %>">Hardwood</li>
 							<li class ="<%= 'text-line-through' if !@house.is_pool %>">Pool</li>
+							<li class ="<%= 'text-line-through' if !@house.storage %>">Storage</li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<ul class="amenities">
+							<li class ="<%= 'text-line-through' if !@house.is_occupied %>">Occupied</li>
 							<li class ="<%= 'text-line-through' if !@house.warranty %>">Home Warranty</li>
 							<li class ="<%= 'text-line-through' if !@house.active %>">Active Listing</li>
 
