@@ -1,6 +1,6 @@
 class ContactMailer < ApplicationMailer
   def contact_us(opts = {})
-    @recipient = 'admin@homehubr.com'
+    @recipient = 'daniel@danielcleaves.com'
     @first_name = opts[:first_name]
     @last_name = opts[:last_name]
     @email = opts[:email]
