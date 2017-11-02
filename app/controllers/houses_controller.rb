@@ -15,6 +15,7 @@ class HousesController < ApplicationController
     @house = current_user.houses.build(house_params)
     if @house.save
       redirect_to listing_house_path(@house), notice: 'Saved...'
+
     else
       flash[:alert] = 'Please fill out the fields...'
       render :new
