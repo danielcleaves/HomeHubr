@@ -112,6 +112,10 @@
 						<h3>Repairs</h3>
 						<%= @house.repairs %>
 					</div>
+				<% else %>
+					<div class="col-md-6  text-center">
+        	<%= image_tag 'repairs-blurred.jpg', style: 'width: 30%' %>
+        	</div>
 				<% end %>
 		</div>
 		<hr/>
@@ -187,6 +191,10 @@
 				<% end %>
 			</div>
 			<hr/>
+		<% else %>
+		<div style="margin-bottom: 2em;">
+			<%= image_tag 'carousel-blurred.jpg', style: 'width: 100%' %>
+			</div>
 		<% end %>
 
 
