@@ -31,7 +31,8 @@
   position: relative;
   margin: 0 auto;
   padding: 0;
-  background-image: url(blur_house.jpg)center center;
+  background-image: url("blur_house.jpg");
+  // background-image: url("noimage/product.png");
   background-size: cover;
 }
 
