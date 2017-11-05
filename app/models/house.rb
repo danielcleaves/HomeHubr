@@ -25,4 +25,9 @@ class House < ApplicationRecord
   def ready?
     price.present? && listing_name.present? && photos.present? && address.present?
   end
+
+  def set_default_lead_price
+    self.lead_price = 50
+    save
+  end
 end

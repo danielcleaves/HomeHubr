@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  skip_before_action :check_phone_number
 
   def show
     @user = User.find(params[:id])
@@ -35,6 +36,9 @@ class UsersController < ApplicationController
     end
 
   def payment
+  end
+
+  def add_phone_number
   end
 
   def add_card

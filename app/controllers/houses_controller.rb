@@ -14,6 +14,7 @@ class HousesController < ApplicationController
   def create
     @house = current_user.houses.build(house_params)
     if @house.save
+      @house.set_default_lead_price
       redirect_to listing_house_path(@house), notice: 'Saved...'
 
     else
@@ -84,9 +85,9 @@ class HousesController < ApplicationController
   end
 
   def house_params
-    params.require(:house).permit(:home_type, :bed_room, :bath_room, :garage, :sq_feet, 
-      :listing_name, :Neighboorhood, :summary, :repairs, :address, :city, :state, :zip_code, 
-      :is_air, :is_heating, :is_occupied, :is_pool, :warranty, :price, :active, :fridge, :stove, 
+    params.require(:house).permit(:home_type, :bed_room, :bath_room, :garage, :sq_feet,
+      :listing_name, :Neighboorhood, :summary, :repairs, :address, :city, :state, :zip_code,
+      :is_air, :is_heating, :is_occupied, :is_pool, :warranty, :price, :active, :fridge, :stove,
       :carpet, :hardwood, :storage)
   end
 end

@@ -37,6 +37,11 @@
               <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
             </div>
 
+            <div class="form-group">
+              <%= f.text_field :phone_number, autofocus: true, placeholder: "Phone Number", class: "form-control" %>
+            </div>
+
+
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
@@ -80,29 +85,8 @@
 </div>
 
 <!-- MODAL FOR PHONE NUMBER -->
-<div id="update-phone" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
+<%= render partial: 'shared/update_phone_number', locals: {kind: 'fade'} %>
 
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Phone Number</h4>
-      </div>
-
-      <div class="modal-body">
-        <%= form_for current_user, url: update_phone_number_user_path(current_user) do |f| %>
-            <div class="form-group">
-              <%= f.phone_field :phone_number, class: "form-control", placeholder: "Your Phone Number" %>
-            </div>
-            <div class="text-center">
-              <%= f.submit "Save", class: "btn btn-normal" %>
-            </div>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <!-- MODAL FOR VERIFICATION -->
 <div id="verify-phone" class="modal fade" role="dialog">

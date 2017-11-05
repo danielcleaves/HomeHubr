@@ -80,9 +80,9 @@ Rails.application.configure do
     path: ':class/:attachment/:id/:style/:filename',
     s3_host_name: 's3-us-east-2.amazonaws.com',
     s3_credentials: {
-      bucket: 'homehubr',
-      access_key_id: 'AKIAIHOQNXMRNGHLIKSQ',
-      secret_access_key: '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',
+      bucket: ENV['S3_BUCKET_NAME'],
+      access_key_id: ENV['S3_ACCESS_KEY_ID'],
+      secret_access_key: ENV['S3_SECRET_ACCESS_KEY'],
       s3_region: 'us-east-2'
     }
 

@@ -34,6 +34,7 @@ group :development do
   gem 'pry-rails'
   gem "letter_opener"
 end
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

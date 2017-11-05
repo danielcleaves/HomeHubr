@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12 hidden-house-img">
 		<% if @user_can_view_lead_info %>
-			<%= image_tag @house.cover_photo(nil), width: "100%" %>
+			<%= image_tag @house.cover_photo(:main), width: "100%" %>
 		<% else %>
 			<div class='blur-house-div'>
 				<div class="hover-content">

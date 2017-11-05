@@ -3,10 +3,10 @@ class Photo < ApplicationRecord
   REQUIRED_WIDTH = 600
   REQUIRED_HEIGHT = 600
 
-  has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>', carousel: '460x345!' }
+  has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>', carousel: '460x345!', main: '600x600#' }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  validate :image_dimensions
+  # validate :image_dimensions
 
   private
 

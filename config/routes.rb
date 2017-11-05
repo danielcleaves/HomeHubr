@@ -34,6 +34,9 @@ Rails.application.routes.draw do
 
   get '/your_leads' => 'bookings#your_leads'
 
+  get '/add_phone_number' => 'users#add_phone_number'
+  # post '/new_phone' => 'users#add_phone_number'
+
   get '/houses' => 'houses#index'
 
   get 'about' => 'pages#about'
