@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  before_action :check_phone_number, if: :current_user
+  before_action :check_phone_number, if: :no_phone?
   skip_before_action :check_phone_number, if: :devise_controller?
+
+  def no_phone?
+    current_user.present? && current_user.phone_number.blank?
+  end
+
   protected
 
   def after_sign_in_path_for(_resource_or_scope)
@@ -17,7 +22,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_phone_number
-    return if current_user.phone_number.present?
     redirect_to add_phone_number_path, alert: 'Please Update Phone number'
   end
 end

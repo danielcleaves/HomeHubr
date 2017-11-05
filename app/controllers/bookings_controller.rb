@@ -8,8 +8,9 @@ class BookingsController < ApplicationController
     elsif !current_user.has_payment_method?
       flash[:alert] = 'Please update your payment method'
       return redirect_to payment_method_path
-    elsif current_user.valid_credit_card?(params[:last4_digits])
+    elsif !current_user.valid_credit_card?(params[:last4_digits])
       flash[:alert] = 'Credit card verification failed'
+      return redirect_to house_path(house)
     else
       @booking = current_user.bookings.build
       @booking.house = house
