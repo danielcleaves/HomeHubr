@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Your Houses", houses_path, class: "sidebar-link"%></li>
+			<li class="sidebar-item"><%= link_to "Your Leads", your_leads_path, class: "sidebar-link active"%></li>
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Your Leads
+			</div>
+			<div class="panel-body">
+				<% @leads.each do |lead| %>
+					<div class="row">
+						<div class="col-md-3">
+								<%= link_to house_path(lead.house) do %>
+								<%= image_tag lead.house.cover_photo(:thumb) %>
+							<% end %>
+						</div>
+						<div class="col-md-5">
+							<%= link_to lead.house.listing_name, house_path(lead.house) %>  <br/>
+							<%= link_to lead.house.address, house_path(lead.house) %>, 
+							<%= link_to lead.house.city, house_path(lead.house) %> 
+							<%= link_to lead.house.state, house_path(lead.house) %>,
+							<%= link_to lead.house.zip_code, house_path(lead.house) %> <br/>
+						</div>
+						<div class="col-md-4">
+							<span class="pull-right text-center">
+							<%= image_tag avatar_url(lead.house.user), class: "img-circle avatar-medium"%>	
+							<%= link_to user_path(lead.house.user) do  %> <br/>
+								<%= lead.house.user.fullname %>
+							<% end %>
+							</span>
+						</div>	
+					</div> 
+					<hr/>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

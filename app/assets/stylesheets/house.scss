@@ -1,0 +1,105 @@
+// Place all the styles related to the House controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.blur-map {
+  height: 400px;
+  width: 1152px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  padding: 0;
+  background: url(blur_map2.jpg) center no-repeat;
+}
+
+.blur-map {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  padding: 0;
+  background: url(blur_map2.jpg) center no-repeat;
+}
+
+.map-blur-img{
+  width: 100%;
+}
+
+.blur-house-div {
+  min-height: 1120px;
+  width: 1120px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  background-image: url("blur_house.jpg");
+  // background-image: url("noimage/product.png");
+  background-size: cover;
+}
+
+.hover-content {
+  display:none;
+  margin: 0 auto;
+  margin-top: -4em;
+  position: absolute;
+  left: 30em;
+}
+
+.house-address-hover-content, .house-map-hover-content, .carousel-hover-content, .repair-hover-content {
+  display: none;
+  width: 80%;
+}
+
+.message-hover-content {
+  display: none;
+}
+
+.house-map-hover-content {
+  margin: auto;
+  width: 50% !important;
+}
+
+.carousel-hover-content {
+  margin: auto;
+  width: 50% !important;
+}
+
+.houston-img {
+  background: image-url("Houston.jpg");
+}
+
+.neworleans-img {
+  background: image-url("NewOrleans.jpg");
+}
+
+.dallas-img {
+  background: image-url("Dallas.jpg");
+}
+
+.daniel-img {
+  background: image-url("Daniel.jpg");
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    width: 100% !important;
+  }
+
+  .blur-house-div {
+    min-height: 360px;
+    width: 100% !important;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background-image: url(blur_house.jpg);
+    background-size: cover;
+  }
+
+  .mobile-view {
+    text-align: center !important;
+    margin-bottom: 2em !important;
+  }
+}
